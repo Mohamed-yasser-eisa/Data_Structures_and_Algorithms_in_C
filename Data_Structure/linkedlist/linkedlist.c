@@ -53,3 +53,42 @@ void linkedlist_push_end(node* head, node** head_ptr, int x, int y)
         (head->next) = temp_ptr;
     }
 }
+
+
+/*
+function pop first node of linkedlist, and returns its value to node of same struct.
+it takes address of struct of node type to return data of deleted node in it.
+*/
+void linkedlist_pop_head(node** head, node* node_ptr)
+{
+    if('\0' != *head) //Is list not empty?
+    {
+        node* temp_ptr = *head; //save address of first node to return its data before deletion.
+        *head = ((*head)->next); //make address of second node replace address of first node.
+        (node_ptr->x) = (temp_ptr->x); //return data of poped node
+        (node_ptr->y) = (temp_ptr->y); //return data of poped node
+        free(*temp_ptr); //delete poped node.
+    }
+}
+
+/*
+function removes last node of linkedlist, and pass its value to node of same struct.
+*/
+void linkedlist_remove_last(node** head, node* node_ptr)
+{
+    if('\0' != *head)
+    {
+        node* temp_pte;
+        while('\0' != (*head)->next)
+        {
+            
+        }
+    }
+}
+
+
+
+
+
+
+
