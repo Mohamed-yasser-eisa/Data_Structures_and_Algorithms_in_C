@@ -5,10 +5,6 @@
 #include "patient.h"
 #include "clinic.h"
 
-
-
-
-
 int main()
 {
     static uint8 first_open = 1;
