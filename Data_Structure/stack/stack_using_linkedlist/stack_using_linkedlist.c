@@ -38,18 +38,9 @@ uint8 stack_empty(void)
 uint8 stack_push(uint8 data)
 {
     node *temp_ptr = (node *)malloc(sizeof(node));
-    if ('\0' == top)
-    {
-        temp_ptr->num = data;
-        temp_ptr->next = '\0';
-        top = temp_ptr;
-    }
-    else
-    {
-        temp_ptr->num = data;
-        temp_ptr->next = top;
-        top = temp_ptr;
-    }
+    temp_ptr->num = data;
+    temp_ptr->next = top;
+    top = temp_ptr;
     ++counter;
 }
 
