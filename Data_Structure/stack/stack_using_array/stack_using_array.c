@@ -81,14 +81,14 @@ sint16 stack_pop(void)
 
 void stack_print(void)
 {
-    uint8 i = 0;
-    if(1 == stack_empty)
+    sint8 i = 0;
+    if(1 == stack_empty() )
     {
         printf("\nStack is empty!!\n\n\a"); 
     }
     else
     {
-        for(i=0; i<=top; ++i)
+        for(i=top; i>=0; --i)
         {
             printf("\nStack[%i] = %i\n", i, stack[i]);
         }
