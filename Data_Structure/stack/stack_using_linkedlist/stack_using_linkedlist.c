@@ -13,8 +13,8 @@
 /*----------------------------Main Program Start----------------------------*/
 int main()
 {
-    
-    //printf("",);
+
+    // printf("",);
     return 0;
 }
 /*______________________________________________________________________________*/
@@ -24,30 +24,30 @@ int main()
 uint8 stack_empty(void)
 {
     uint8 flag = 0;
-    if( '\0' == top)
+    if ('\0' == top)
     {
-        flag = 1; //yes, stack is empty
+        flag = 1; // yes, stack is empty
     }
     else
     {
-        flag = 0; //no, stack is not empty
+        flag = 0; // no, stack is not empty
     }
     return flag;
 }
 
 uint8 stack_push(uint8 data)
 {
-    node *temp_ptr = (node*)malloc(sizeof(node));
-    if( '\0' == top)
+    node *temp_ptr = (node *)malloc(sizeof(node));
+    if ('\0' == top)
     {
-        temp_ptr -> num = data;
-        temp_ptr -> next = '\0';
+        temp_ptr->num = data;
+        temp_ptr->next = '\0';
         top = temp_ptr;
     }
     else
     {
-        temp_ptr -> num = data;
-        temp_ptr -> next = top;
+        temp_ptr->num = data;
+        temp_ptr->next = top;
         top = temp_ptr;
     }
     ++counter;
@@ -56,30 +56,37 @@ uint8 stack_push(uint8 data)
 sint16 stack_pop(void)
 {
     sint16 data = 0;
-    if(1 == stack_empty() )
+    if (1 == stack_empty())
     {
-        data = -1; //stack is empty
+        data = -1; // stack is empty
     }
     else
     {
-        data = stack[top]; //stack is not empty
-        --top;
+        data = top->num; // stack is not empty
+        node *temp = top->next;
+        free(top);
+        top = temp;
     }
+    --counter;
     return data;
 }
 
 void stack_print(void)
 {
     uint8 i = 0;
-    if(1 == stack_empty)
+    if (1 == stack_empty())
     {
-        printf("\nStack is empty!!\n\n\a"); 
+        printf("\nStack is empty!!\n\n\a");
     }
     else
     {
-        for(i=0; i<=top; ++i)
+        node *temp_ptr = top;
+        uint16 i = 1;
+        while ('\0' != temp_ptr)
         {
-            printf("\nStack[%i] = %i\n", i, stack[i]);
+            printf("\nStack[%i] = %i\n", i, temp_ptr->num);
+            ++i;
+            temp_ptr = temp_ptr->next;
         }
     }
 }
@@ -87,20 +94,20 @@ void stack_print(void)
 sint8 stack_top_val(void)
 {
     sint8 data = 0;
-    if(1 == stack_empty())
+    if (1 == stack_empty())
     {
         data = -1;
     }
     else
     {
-        data = stack[top];
+        data = top->num;
     }
     return data;
 }
 
 sint16 stack_num_elements(void)
 {
-    return top+1;
+    return counter;
 }
 /*______________________________________________________________________________*/
 
